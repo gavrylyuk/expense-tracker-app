@@ -1,0 +1,64 @@
+<h2 mat-dialog-title>{{data ? 'Add' : 'Edit'}} transaction</h2>
+<mat-dialog-content>
+
+    <form [formGroup]="transactionForm" class="transaction-form-wrapper">
+
+        <mat-form-field>
+            <mat-label>Transaction name</mat-label>
+            <input matInput formControlName="transactionName">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Amount</mat-label>
+            <input matInput formControlName="amount">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Type</mat-label>
+            <mat-select formControlName="type" name="type" class="capitalize">
+                <mat-option [value]="TransactionTypeValue.INCOME" class="capitalize">
+                    {{TransactionTypeValue.INCOME}}
+                </mat-option>
+                <mat-option [value]="TransactionTypeValue.EXPENSE" class="capitalize">
+                    {{TransactionTypeValue.EXPENSE}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="categoryId" name="category">
+                @for (category of categoryList; track category) {
+
+                <mat-option [value]="category.categoryId">{{category.categoryName}}</mat-option>
+
+                }
+            </mat-select>
+        </mat-form-field>
+
+        <!-- TODO implement functionality to add new category -->
+        <!-- <button (click)="onClickAddNewCategory()" mat-button aria-label="View total balance" class="button-margin">
+            <mat-icon>new_label</mat-icon>
+            <span>Add new category</span>
+        </button>
+
+        <mat-form-field>
+            <mat-label>Transaction name</mat-label>
+            <input matInput [formControl]="transactionNameControl">
+        </mat-form-field> -->
+
+        <mat-form-field>
+            <mat-label>Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="createDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+    </form>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="newTransation" [disabled]="transactionForm.invalid">Add</button>
+</mat-dialog-actions>

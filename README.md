@@ -2,6 +2,9 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.2.
 
+Node.js version 22.11.0
+
+
 ## Development server
 
 To start a local development server, run:

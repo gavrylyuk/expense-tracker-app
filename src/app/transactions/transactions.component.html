@@ -1,0 +1,22 @@
+<mat-toolbar>
+    <div class="header-wrapper">
+        <div class="app-name-wrapper">
+            <a routerLink="'/'" mat-icon-button aria-hidden="false" aria-label="Expense Tracker Application">
+                <mat-icon>payments</mat-icon>
+            </a>
+            <span>Expense Tracker Application</span>
+        </div>
+        <div>
+            <button (click)="onClickAddTransaction()" mat-button aria-label="Add transaction">
+                <mat-icon>post_add</mat-icon>
+                <span>Add transaction</span>
+            </button>
+            <button (click)="onClickViewTotalBalance()" mat-button aria-label="View total balance">
+                <mat-icon>account_balance_wallet</mat-icon>
+                <span>View total balance</span>
+            </button>
+        </div>
+    </div>
+</mat-toolbar>
+
+<app-transactions-board></app-transactions-board>

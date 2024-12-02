@@ -1,0 +1,55 @@
+<mat-toolbar>
+    <form [formGroup]="filterOptions" class="filter-wrapper">
+
+        <mat-form-field>
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="filterCategory" name="filterCategory">
+                <mat-option>None</mat-option>
+                @for (category of categoryList; track category) {
+
+                <mat-option [value]="category.categoryId">{{category.categoryName}}</mat-option>
+
+                }
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Type</mat-label>
+            <mat-select formControlName="filterType" name="filterType" class="capitalize">
+                <mat-option>None</mat-option>
+                <mat-option [value]="TransactionTypeValue.INCOME" class="capitalize">
+                    {{TransactionTypeValue.INCOME}}
+                </mat-option>
+                <mat-option [value]="TransactionTypeValue.EXPENSE" class="capitalize">
+                    {{TransactionTypeValue.EXPENSE}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+    </form>
+</mat-toolbar>
+<mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="transactionName">
+        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.transactionName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="category">
+        <mat-header-cell *matHeaderCellDef>Category</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.category ? element.category.categoryName : '-'}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+            sortActionDescription="Sort by amount">Amount</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.amount | currency}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="createDate">
+        <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by date">Date </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.createDate | date}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

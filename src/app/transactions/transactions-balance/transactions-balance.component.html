@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Balance</h2>
+<mat-dialog-content>
+  <p><b>Expenses: </b>
+    {{totalExpenses | currency}}
+  </p>
+  <p><b>Incoms: </b>
+    {{totalIncoms | currency}}
+  </p>
+  <mat-divider></mat-divider>
+  <p><b>Total: </b>
+    {{(totalExpenses + totalIncoms) | currency}}
+  </p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

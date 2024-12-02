@@ -1,0 +1,4 @@
+.app-background {
+    background: var(--mat-toolbar-container-background-color, var(--mat-sys-surface));
+    height: 100vh;
+}

@@ -1,0 +1,17 @@
+:host {
+  display: block;
+}
+
+.transaction-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-width: fit-content;
+}
+
+.button-margin {
+  margin-bottom: 1rem;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}

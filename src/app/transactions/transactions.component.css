@@ -1,0 +1,16 @@
+.header-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.app-name-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.mat-toolbar {
+    height: fit-content;
+    margin-bottom: 1rem;
+}
